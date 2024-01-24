@@ -29,6 +29,7 @@ namespace SortedAPI.Controllers
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status401Unauthorized)]
         [Route("id/{stationId}/readings")]
         public ActionResult<RainfallReading> GetRainfallReading(string stationId, [FromQuery] QueryParam queryParam)
         {

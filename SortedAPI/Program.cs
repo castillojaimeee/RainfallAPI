@@ -6,16 +6,37 @@ using Sorted.Application.Interface;
 using Sorted.Application.Service;
 using Sorted.Core.Entities;
 using Sorted.Infrastructure.Data;
+using SortedAPI.Middleware;
 using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+//builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(option =>
+{
+    option.SwaggerDoc("v1", new OpenApiInfo { Title = "Demo API", Version = "v1" });
+    option.AddSecurityDefinition("Basic", new OpenApiSecurityScheme
+    {
+        Description = "Basic auth added to authorization header",
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Scheme = "basic",
+        Type = SecuritySchemeType.Http
+    });
+    option.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+       {
+         new OpenApiSecurityScheme
+         {
+            Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Basic" }
+         }, new List<string>()
+       }
+    });
+});
 builder.Services.AddScoped<IRainfallReadingRepository, RainfallReadingRepository>();
 builder.Services.AddScoped<IRainfallReadingService, RainFallReadingService>();
 builder.Services.AddControllers(options => options.OutputFormatters.RemoveType<StringOutputFormatter>());
@@ -42,6 +63,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseMiddleware<BasicAuthMiddleware>();
 
 app.UseAuthorization();
 
