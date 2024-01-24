@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.OpenApi.Models;
 using Sorted.Application.Interface;
 using Sorted.Application.Service;
+using Sorted.Core.Entities;
 using Sorted.Infrastructure.Data;
 using System.Net;
 
@@ -16,6 +18,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IRainfallReadingRepository, RainfallReadingRepository>();
 builder.Services.AddScoped<IRainfallReadingService, RainFallReadingService>();
+builder.Services.AddControllers(options => options.OutputFormatters.RemoveType<StringOutputFormatter>());
 
 builder.Services.AddMvcCore().ConfigureApiBehaviorOptions(options => {
     options.InvalidModelStateResponseFactory = (errorContext) =>
@@ -24,7 +27,7 @@ builder.Services.AddMvcCore().ConfigureApiBehaviorOptions(options => {
         {
             ErrorMessage = m.ErrorMessage
         })).ToList();
-        var result = "Invalid Request";
+        var result = new ErrorResponse { Message = "Invalid Request" };
         return new BadRequestObjectResult(result);
     };
 });

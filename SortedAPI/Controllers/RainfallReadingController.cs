@@ -25,32 +25,28 @@ namespace SortedAPI.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType(typeof(RainfallReading),StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
         [Route("id/{stationId}/readings")]
         public ActionResult<RainfallReading> GetRainfallReading(string stationId, [FromQuery] QueryParam queryParam)
         {
             try
             {
-                if (this.ModelState.IsValid)
+                var result = this._rainfallReadingService.GetRainfallReading(stationId, queryParam.count).GetAwaiter().GetResult();
+                if (result.Count > 0)
                 {
-                    var result = this._rainfallReadingService.GetRainfallReading(stationId, queryParam.count).GetAwaiter().GetResult();
-                    if (result.Count > 0)
-                    {
-                        return Ok(result);
-                    }
-                    else
-                    {
-                        return StatusCode(404, "No readings found for the specified stationId") ;
-                    }
+                    return Ok(result);
                 }
                 else
                 {
-                    return StatusCode(400, "Invalid request");
+                    return StatusCode(404, new JsonResult(new ErrorResponse { Message = "No readings found for the specified stationId" }));
                 }
-               
             }
             catch
             {
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, new JsonResult(new ErrorResponse { Message = "Internal server error" }));
             } 
         }
     }
