@@ -2,18 +2,6 @@
   "version": 3,
   "targets": {
     "net6.0": {
-      "json-ld.net/1.0.7": {
-        "type": "package",
-        "dependencies": {
-          "Newtonsoft.Json": "9.0.1"
-        },
-        "compile": {
-          "lib/netstandard2.0/json-ld.net.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/json-ld.net.dll": {}
-        }
-      },
       "Microsoft.Extensions.ApiDescription.Server/6.0.5": {
         "type": "package",
         "build": {
@@ -126,8 +114,7 @@
         "dependencies": {
           "Newtonsoft.Json": "13.0.3",
           "Sorted.Application": "1.0.0",
-          "Sorted.Core": "1.0.0",
-          "json-ld.net": "1.0.7"
+          "Sorted.Core": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Sorted.Infrastructure.dll": {}
@@ -139,51 +126,6 @@
     }
   },
   "libraries": {
-    "json-ld.net/1.0.7": {
-      "sha512": "z0bqUrAaqkqHMQ0fCKHzix53CCWS45CCjdDfisN9H89zMvyrZxizpdfe65LI3NfAoADhqo5pmXyDqVW60/hXaA==",
-      "type": "package",
-      "path": "json-ld.net/1.0.7",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "json-ld.net.1.0.7.nupkg.sha512",
-        "json-ld.net.nuspec",
-        "lib/net40/json-ld.net.dll",
-        "lib/net40/json-ld.net.pdb",
-        "lib/netstandard1.1/json-ld.net.dll",
-        "lib/netstandard1.1/json-ld.net.pdb",
-        "lib/netstandard2.0/json-ld.net.dll",
-        "lib/netstandard2.0/json-ld.net.pdb",
-        "src/json-ld.net/Core/Context.cs",
-        "src/json-ld.net/Core/DocumentLoader.cs",
-        "src/json-ld.net/Core/IJSONLDTripleCallback.cs",
-        "src/json-ld.net/Core/IRDFParser.cs",
-        "src/json-ld.net/Core/JSONLDConsts.cs",
-        "src/json-ld.net/Core/JsonLdApi.cs",
-        "src/json-ld.net/Core/JsonLdError.cs",
-        "src/json-ld.net/Core/JsonLdOptions.cs",
-        "src/json-ld.net/Core/JsonLdProcessor.cs",
-        "src/json-ld.net/Core/JsonLdSet.cs",
-        "src/json-ld.net/Core/JsonLdUtils.cs",
-        "src/json-ld.net/Core/NormalizeUtils.cs",
-        "src/json-ld.net/Core/RDFDataset.cs",
-        "src/json-ld.net/Core/RDFDatasetUtils.cs",
-        "src/json-ld.net/Core/Regex.cs",
-        "src/json-ld.net/Core/RemoteDocument.cs",
-        "src/json-ld.net/Core/UniqueNamer.cs",
-        "src/json-ld.net/Impl/NQuadRDFParser.cs",
-        "src/json-ld.net/Impl/NQuadTripleCallback.cs",
-        "src/json-ld.net/Impl/TurtleRDFParser.cs",
-        "src/json-ld.net/Impl/TurtleTripleCallback.cs",
-        "src/json-ld.net/Properties/AssemblyInfo.cs",
-        "src/json-ld.net/Util/JSONUtils.cs",
-        "src/json-ld.net/Util/JavaCompat.cs",
-        "src/json-ld.net/Util/LDHttpClient.cs",
-        "src/json-ld.net/Util/Obj.cs",
-        "src/json-ld.net/Util/URL.cs",
-        "src/json-ld.net/json-ld.net.csproj"
-      ]
-    },
     "Microsoft.Extensions.ApiDescription.Server/6.0.5": {
       "sha512": "Ckb5EDBUNJdFWyajfXzUIMRkhf52fHZOQuuZg/oiu8y7zDCVwD0iHhew6MnThjHmevanpxL3f5ci2TtHQEN6bw==",
       "type": "package",

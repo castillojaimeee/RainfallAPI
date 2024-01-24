@@ -15,9 +15,9 @@ namespace Sorted.Application.Service
         {
             this._rainfallReadingRepository = rainfallReadingRepository;
         }
-        Task<Response> IRainfallReadingService.GetRainfallReading(string stationId)
+        Task<List<RainfallReading>> IRainfallReadingService.GetRainfallReading(string stationId, int count)
         {
-            return this._rainfallReadingRepository.GetRainfallReading(stationId);
+            return this._rainfallReadingRepository.GetRainfallReading(stationId, count);
         }
     }
 }

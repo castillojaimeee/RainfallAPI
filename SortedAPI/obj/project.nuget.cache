@@ -1,10 +1,9 @@
 {
   "version": 2,
-  "dgSpecHash": "XXIEE4nV8HoqdsECcu4/WZk5sC1GfQDusrnWGJffubrIf2laNqZ5TPOj+vr5cRTUe+qNixMPNKbwQPOAh6/0HQ==",
+  "dgSpecHash": "CGNpBXTjyoqyJuiZGARdOPkFoUWotkryC/YabezC3elOzl35SajJttDKBuVu1loNfD/kA6ngStmfG9I7ldOWkQ==",
   "success": true,
   "projectFilePath": "D:\\Jaime - Personal\\RainfallAPI\\SortedAPI\\SortedAPI.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\jciii\\.nuget\\packages\\json-ld.net\\1.0.7\\json-ld.net.1.0.7.nupkg.sha512",
     "C:\\Users\\jciii\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\jciii\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\jciii\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",

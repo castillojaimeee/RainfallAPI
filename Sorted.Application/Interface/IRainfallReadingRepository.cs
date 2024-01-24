@@ -9,6 +9,6 @@ namespace Sorted.Application.Interface
 {
     public interface IRainfallReadingRepository
     {
-        Task<Response> GetRainfallReading(string stationId);
+        Task<List<RainfallReading>> GetRainfallReading(string stationId, int count);
     }
 }
