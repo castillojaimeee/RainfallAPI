@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "1ybRk3I0T/5JyvIj/VBLljXXxMECagm7Iqiv0Xsqbqm4HtpMxy5adkwn5iG+fmBNTM3rAOliD8awMtsURaQTLg==",
+  "success": true,
+  "projectFilePath": "D:\\Jaime - Personal\\RainfallAPI\\Sorted.Application\\Sorted.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jciii\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
