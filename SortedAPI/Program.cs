@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.OpenApi.Models;
+using Sorted.Application.Exceptions;
 using Sorted.Application.Interface;
 using Sorted.Application.Service;
 using Sorted.Core.Entities;
@@ -44,12 +45,7 @@ builder.Services.AddControllers(options => options.OutputFormatters.RemoveType<S
 builder.Services.AddMvcCore().ConfigureApiBehaviorOptions(options => {
     options.InvalidModelStateResponseFactory = (errorContext) =>
     {
-        var errors = errorContext.ModelState.Values.SelectMany(e => e.Errors.Select(m => new
-        {
-            ErrorMessage = m.ErrorMessage
-        })).ToList();
-        var result = new ErrorResponse { Message = "Invalid Request" };
-        return new BadRequestObjectResult(result);
+        throw new ValidationException();
     };
 });
 
@@ -63,7 +59,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseMiddleware<GlobalErrorHandlingMiddleware>();
 app.UseMiddleware<BasicAuthMiddleware>();
 
 app.UseAuthorization();

@@ -67,3 +67,14 @@ D:\Jaime - Personal\RainfallAPI\SortedAPI\obj\Debug\net6.0\SortedAPI.dll
 D:\Jaime - Personal\RainfallAPI\SortedAPI\obj\Debug\net6.0\ref\SortedAPI.dll
 D:\Jaime - Personal\RainfallAPI\SortedAPI\obj\Debug\net6.0\SortedAPI.pdb
 D:\Jaime - Personal\RainfallAPI\SortedAPI\obj\Debug\net6.0\SortedAPI.genruntimeconfig.cache
+D:\Jaime - Personal\RainfallAPI\SortedAPI\bin\Debug\net6.0\System.Net.Http.Formatting.dll
+D:\Jaime - Personal\RainfallAPI\SortedAPI\bin\Debug\net6.0\System.Web.Http.dll
+D:\Jaime - Personal\RainfallAPI\SortedAPI\bin\Debug\net6.0\microsoft.identitymodel.dll
+D:\Jaime - Personal\RainfallAPI\SortedAPI\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+D:\Jaime - Personal\RainfallAPI\SortedAPI\bin\Debug\net6.0\System.Web.Mvc.dll
+D:\Jaime - Personal\RainfallAPI\SortedAPI\bin\Debug\net6.0\System.Web.Razor.dll
+D:\Jaime - Personal\RainfallAPI\SortedAPI\bin\Debug\net6.0\System.Web.Helpers.dll
+D:\Jaime - Personal\RainfallAPI\SortedAPI\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
+D:\Jaime - Personal\RainfallAPI\SortedAPI\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
+D:\Jaime - Personal\RainfallAPI\SortedAPI\bin\Debug\net6.0\System.Web.WebPages.dll
+D:\Jaime - Personal\RainfallAPI\SortedAPI\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll

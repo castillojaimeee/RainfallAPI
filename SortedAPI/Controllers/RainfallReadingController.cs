@@ -26,29 +26,10 @@ namespace SortedAPI.Controllers
 
         [HttpGet]
         [ProducesResponseType(typeof(RainfallReading),StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
-        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status500InternalServerError)]
-        [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status401Unauthorized)]
         [Route("id/{stationId}/readings")]
-        public ActionResult<RainfallReading> GetRainfallReading(string stationId, [FromQuery] QueryParam queryParam)
+        public async Task<ActionResult<RainfallReading>> GetRainfallReading(string stationId, [FromQuery] QueryParam queryParam)
         {
-            try
-            {
-                var result = this._rainfallReadingService.GetRainfallReading(stationId, queryParam.count).GetAwaiter().GetResult();
-                if (result.Count > 0)
-                {
-                    return Ok(result);
-                }
-                else
-                {
-                    return StatusCode(404, new JsonResult(new ErrorResponse { Message = "No readings found for the specified stationId" }));
-                }
-            }
-            catch
-            {
-                return StatusCode(500, new JsonResult(new ErrorResponse { Message = "Internal server error" }));
-            } 
+            return Ok(await this._rainfallReadingService.GetRainfallReading(stationId, queryParam.count));
         }
     }
 }

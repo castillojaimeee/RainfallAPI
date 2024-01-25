@@ -1,4 +1,7 @@
-﻿using System.Net;
+﻿using Microsoft.AspNetCore.Mvc;
+using Sorted.Application.Exceptions;
+using Sorted.Core.Entities;
+using System.Net;
 using System.Security.Cryptography;
 using System.Security.Principal;
 using System.Text;
@@ -19,65 +22,46 @@ namespace SortedAPI.Middleware
 
         public async Task Invoke(HttpContext context)
         {
-            try
+            string authToken = string.Empty;
+            if (IsValidAuthorization(context, out authToken))
             {
-                string authToken = string.Empty;
-                if (IsValidAuthorization(context, out authToken))
-                {
-                    Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(authToken), null);
-                    await this._next.Invoke(context);
-                }
-                else
-                {
-                    UnauthorizedHandling(context);
-                }
+                Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(authToken), null);
+                await this._next.Invoke(context);
             }
-            catch
+            else
             {
-                UnauthorizedHandling(context);
+                throw new UnauthorizedException();
             }
         }
-
-        internal void UnauthorizedHandling(HttpContext context)
-        {
-            context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
-        }
-
         private bool IsValidAuthorization(HttpContext context, out string authToken)
         {
             bool isValid = false;
             authToken = string.Empty;
-            try
+
+            string authHeader = context.Request.Headers["Authorization"];
+
+            if (authHeader != null && authHeader.StartsWith("Basic"))
             {
-                string authHeader = context.Request.Headers["Authorization"];
+                authHeader = authHeader.Replace("Basic ", "");
+                authToken = authHeader;
+                var decodeAuthHeader = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(authHeader));
 
-                if (authHeader != null && authHeader.StartsWith("Basic"))
+                var userCredentials = decodeAuthHeader.Split(':');
+
+                if (userCredentials.Length == 2)
                 {
-                    authHeader = authHeader.Replace("Basic ", "");
-                    authToken = authHeader;
-                    var decodeAuthHeader = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(authHeader));
+                    string userName;
+                    string passWord;
+                    userName = userCredentials[0];
+                    passWord = CreateMD5(userCredentials[1]);
 
-                    var userCredentials = decodeAuthHeader.Split(':');
-
-                    if (userCredentials.Length == 2)
+                    if ((userName == configuration["Username"]) && (passWord == configuration["Password"].ToUpper()))
                     {
-                        string userName;
-                        string passWord;
-                        userName = userCredentials[0];
-                        passWord = CreateMD5(userCredentials[1]);
-
-                        if ((userName == configuration["Username"]) &&(passWord == configuration["Password"].ToUpper()))
-                        {
-                            isValid = true;
-                        }
+                        isValid = true;
                     }
                 }
-                return isValid;
             }
-            catch
-            {
-                throw;
-            }
+            return isValid;
         }
 
         public static string CreateMD5(string input)
