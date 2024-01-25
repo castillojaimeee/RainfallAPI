@@ -25,9 +25,9 @@ namespace SortedAPI.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(RainfallReading),StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<RainfallReading>),StatusCodes.Status200OK)]
         [Route("id/{stationId}/readings")]
-        public async Task<ActionResult<RainfallReading>> GetRainfallReading(string stationId, [FromQuery] QueryParam queryParam)
+        public async Task<ActionResult<List<RainfallReading>>> GetRainfallReading(string stationId, [FromQuery] QueryParam queryParam)
         {
             return Ok(await this._rainfallReadingService.GetRainfallReading(stationId, queryParam.count));
         }

@@ -13,7 +13,7 @@ namespace Sorted.Infrastructure.Data
 {
     public class RainfallReadingRepository : IRainfallReadingRepository
     {
-        public async Task<List<RainfallReading>> GetRainfallReading(string stationId, int count)
+        public async Task<List<RainfallReading>> GetRainfallReading(string stationId, int count = 10)
         {
             string rainfallApiUrl = string.Format("http://environment.data.gov.uk/flood-monitoring/id/stations/{0}/readings?_limit={1}", stationId,count);
             var myClient = new HttpClient(new HttpClientHandler() { UseDefaultCredentials = true });

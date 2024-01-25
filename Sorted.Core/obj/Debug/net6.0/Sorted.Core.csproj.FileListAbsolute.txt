@@ -21,3 +21,4 @@ D:\Jaime - Personal\RainfallAPI\Sorted.Core\obj\Debug\net6.0\Sorted.Core.csproj.
 D:\Jaime - Personal\RainfallAPI\Sorted.Core\obj\Debug\net6.0\Sorted.Core.dll
 D:\Jaime - Personal\RainfallAPI\Sorted.Core\obj\Debug\net6.0\ref\Sorted.Core.dll
 D:\Jaime - Personal\RainfallAPI\Sorted.Core\obj\Debug\net6.0\Sorted.Core.pdb
+D:\Jaime - Personal\RainfallAPI\Sorted.Core\obj\Debug\net6.0\Sorted.Core.csproj.AssemblyReference.cache
